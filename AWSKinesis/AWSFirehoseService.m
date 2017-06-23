@@ -414,7 +414,11 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
             completionHandler(result, error);
         }
 
-        return nil;
+        if (error) {
+            return [AWSTask taskWithError:error];
+        } else {
+            return nil;
+        }
     }];
 }
 
